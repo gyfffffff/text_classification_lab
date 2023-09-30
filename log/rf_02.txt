@@ -1,0 +1,43 @@
+2023-09-29 13:46:21,231 =================== rf_02 start training ===================
+2023-09-29 13:46:23,223 gridsearching...
+2023-09-29 14:14:45,756 model: rf_02, best_params: {'min_samples_leaf': 2, 'min_samples_split': 6}
+2023-09-29 14:14:45,756 0.542 (+/-0.046) for {'n_estimators': 3}
+2023-09-29 14:14:45,756 0.741 (+/-0.037) for {'n_estimators': 8}
+2023-09-29 14:14:45,756 0.780 (+/-0.025) for {'n_estimators': 12}
+2023-09-29 14:14:45,756 0.816 (+/-0.038) for {'n_estimators': 16}
+2023-09-29 14:14:45,756 0.833 (+/-0.020) for {'n_estimators': 20}
+2023-09-29 14:14:45,756 0.864 (+/-0.015) for {'n_estimators': 30}
+2023-09-29 14:14:45,756 0.721 (+/-0.044) for {'max_depth': 3}
+2023-09-29 14:14:45,756 0.792 (+/-0.041) for {'max_depth': 5}
+2023-09-29 14:14:45,756 0.821 (+/-0.008) for {'max_depth': 7}
+2023-09-29 14:14:45,756 0.848 (+/-0.024) for {'max_depth': 9}
+2023-09-29 14:14:45,756 0.905 (+/-0.008) for {'min_samples_leaf': 2, 'min_samples_split': 2}
+2023-09-29 14:14:45,756 0.909 (+/-0.012) for {'min_samples_leaf': 2, 'min_samples_split': 6}
+2023-09-29 14:14:45,756 0.903 (+/-0.013) for {'min_samples_leaf': 2, 'min_samples_split': 12}
+2023-09-29 14:14:45,756 0.908 (+/-0.017) for {'min_samples_leaf': 2, 'min_samples_split': 18}
+2023-09-29 14:14:45,756 0.904 (+/-0.011) for {'min_samples_leaf': 2, 'min_samples_split': 24}
+2023-09-29 14:14:45,756 0.897 (+/-0.012) for {'min_samples_leaf': 6, 'min_samples_split': 2}
+2023-09-29 14:14:45,756 0.894 (+/-0.012) for {'min_samples_leaf': 6, 'min_samples_split': 6}
+2023-09-29 14:14:45,756 0.898 (+/-0.011) for {'min_samples_leaf': 6, 'min_samples_split': 12}
+2023-09-29 14:14:45,756 0.892 (+/-0.012) for {'min_samples_leaf': 6, 'min_samples_split': 18}
+2023-09-29 14:14:45,756 0.896 (+/-0.016) for {'min_samples_leaf': 6, 'min_samples_split': 24}
+2023-09-29 14:14:45,756 0.883 (+/-0.012) for {'min_samples_leaf': 10, 'min_samples_split': 2}
+2023-09-29 14:14:45,756 0.878 (+/-0.020) for {'min_samples_leaf': 10, 'min_samples_split': 6}
+2023-09-29 14:14:45,756 0.881 (+/-0.014) for {'min_samples_leaf': 10, 'min_samples_split': 12}
+2023-09-29 14:14:45,756 0.881 (+/-0.011) for {'min_samples_leaf': 10, 'min_samples_split': 18}
+2023-09-29 14:14:45,756 0.884 (+/-0.008) for {'min_samples_leaf': 10, 'min_samples_split': 24}
+2023-09-29 14:14:45,756 0.858 (+/-0.022) for {'min_samples_leaf': 16, 'min_samples_split': 2}
+2023-09-29 14:14:45,756 0.853 (+/-0.018) for {'min_samples_leaf': 16, 'min_samples_split': 6}
+2023-09-29 14:14:45,756 0.859 (+/-0.010) for {'min_samples_leaf': 16, 'min_samples_split': 12}
+2023-09-29 14:14:45,756 0.853 (+/-0.029) for {'min_samples_leaf': 16, 'min_samples_split': 18}
+2023-09-29 14:14:45,756 0.853 (+/-0.024) for {'min_samples_leaf': 16, 'min_samples_split': 24}
+2023-09-29 14:14:45,756 0.819 (+/-0.029) for {'min_samples_leaf': 22, 'min_samples_split': 2}
+2023-09-29 14:14:45,756 0.824 (+/-0.027) for {'min_samples_leaf': 22, 'min_samples_split': 6}
+2023-09-29 14:14:45,756 0.816 (+/-0.029) for {'min_samples_leaf': 22, 'min_samples_split': 12}
+2023-09-29 14:14:45,756 0.828 (+/-0.026) for {'min_samples_leaf': 22, 'min_samples_split': 18}
+2023-09-29 14:14:45,756 0.825 (+/-0.012) for {'min_samples_leaf': 22, 'min_samples_split': 24}
+2023-09-29 14:14:45,799 model saved in model/rf_02.pkl
+2023-09-29 14:14:45,799 time spend 1704.567708015442 s
+2023-09-29 14:18:47,368 =================== rf_02 start testing ===================
+2023-09-29 14:18:49,353 model: rf_02, test_acc_mean: 0.914375, test_f1_mean: 0.9128961384388884
+2023-09-29 14:18:49,353 time spend 1.9847521781921387 s

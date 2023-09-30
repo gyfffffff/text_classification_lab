@@ -1,0 +1,12 @@
+2023-09-29 16:17:14,379 =================== logisticReg_01 start training ===================
+2023-09-29 16:17:16,900 gridsearching...
+2023-09-29 17:39:12,652 model: logisticReg_01, best_params: {'C': 1000, 'max_iter': 2000, 'multi_class': 'multinomial'}
+2023-09-29 17:39:12,652 0.932 (+/-0.013) for {'C': 1, 'max_iter': 2000, 'multi_class': 'multinomial'}
+2023-09-29 17:39:12,652 0.934 (+/-0.014) for {'C': 10, 'max_iter': 2000, 'multi_class': 'multinomial'}
+2023-09-29 17:39:12,652 0.935 (+/-0.015) for {'C': 100, 'max_iter': 2000, 'multi_class': 'multinomial'}
+2023-09-29 17:39:12,652 0.936 (+/-0.017) for {'C': 1000, 'max_iter': 2000, 'multi_class': 'multinomial'}
+2023-09-29 17:39:12,674 model saved in model/logisticReg_01.pkl
+2023-09-29 17:39:12,686 time spend 4918.307144165039 s
+2023-09-29 17:43:29,322 =================== logisticReg_01 start testing ===================
+2023-09-29 17:43:30,945 model: logisticReg_01, test_acc_mean: 0.94375, test_f1_mean: 0.9440967934564435
+2023-09-29 17:43:30,945 time spend 1.6235215663909912 s

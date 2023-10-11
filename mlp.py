@@ -28,23 +28,23 @@ class MLP(nn.Module):
 
 def mlp(x_train, y_train, device, modelname, train, vectorize_method):
 
-    learning_rate = 0.05 # 1, 0.1, 0.01, 0.001
+    learning_rate = 0.25 # 1, 0.1, 0.01, 0.001
     if vectorize_method == 'tf-idf':
-        hn = 2048 # 3060 2048 1024 
-        init_n = 310271
+        hn = 600 # 3060 2048 1024 
+        init_n = 29697
     elif vectorize_method == 'bert':
-        hn = 512
+        hn = 320
         init_n = 768
     else:
         hn = 64
         init_n = 100
     activate_func = nn.PReLU() # nn.ReLU(), nn.LeakyReLU(), nn.PReLU(), nn.tanh(), nn.sigmoid()
-    p = 0.2 # 0.15 0.5 0.7
+    p = 0.3 # 0.15 0.5 0.7
     wdc = 0.001 # 0.01 0.001 0.1
     optim = torch.optim.SGD # torch.optim.Adam
-    batchsize = 32 # 64 
+    batchsize = 64 # 64 
 
-    patient = 16  # 有2次验证集上损失增加，就认为模型有过拟合倾向
+    patient = 64  # 有2次验证集上损失增加，就认为模型有过拟合倾向
     patienti = 0
 
     logging.basicConfig(format='%(asctime)s %(message)s',
@@ -53,7 +53,7 @@ def mlp(x_train, y_train, device, modelname, train, vectorize_method):
             level=logging.INFO)
     
     if train == True:
-        logging.info(f'lr: {learning_rate}, hn: {hn}, p: {p}, wdc: {wdc}, batchsize: {batchsize},\n \t\t\t\t\t\t prelu, sgd, Xavier, exp lr scheduler')
+        logging.info(f'lr: {learning_rate}, hn: {hn}, p: {p}, wdc: {wdc}, batchsize: {batchsize},\n \t\t\t\t\t\t relu, sgd, kaiming, cos lr scheduler')
         model = MLP(activate_func, hn, p, init_n).to(device)
 
         # 损失函数
@@ -61,10 +61,10 @@ def mlp(x_train, y_train, device, modelname, train, vectorize_method):
 
         # 优化器
         optimizer = optim(model.parameters(), lr=learning_rate, weight_decay=wdc)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=150, eta_min=1e-4)
+        # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=150, eta_min=1e-4)
         # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer,
-        #             milestones=[10, 15, 20, 25, 35, 45], gamma=0.9)
-        scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.999)
+        #             milestones=[10, 20, 35, 55], gamma=0.99)
+        scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9999)
 
         # 设置训练网络的参数
         total_train_step = 0  # 记录训练的次数
@@ -124,7 +124,7 @@ def mlp(x_train, y_train, device, modelname, train, vectorize_method):
                 accuracy = (predict.argmax(1) == y_val).sum()
                 total_val_accuracy += accuracy
             logging.info("\n第{}轮, 验证集上loss: {}, accuracy: {}\n".format(i+1, total_val_loss, total_val_accuracy/val_n))
-            if bestacc < total_val_accuracy/val_n:
+            if bestacc <= total_val_accuracy/val_n:
                 bestacc = total_val_accuracy/val_n
                 bestmodel = model
             if minloss > total_val_loss:
@@ -132,14 +132,14 @@ def mlp(x_train, y_train, device, modelname, train, vectorize_method):
             
             # 早停策略
             gen_loss = total_val_loss/minloss - 1
-            if gen_loss >= earlystop_a:
+            if gen_loss > earlystop_a:
                 if patienti >= patient:
                     logging.info('Apply earlystop.')
                     break
                 else:
                     patienti += 1
         
-        pickle.dump(model, open(f'model/{modelname}.pkl', 'wb'))
+        pickle.dump(bestmodel, open(f'model/{modelname}.pkl', 'wb'))
         logging.info(f'model saved in model/{modelname}.pkl')
             
 

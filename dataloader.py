@@ -92,12 +92,16 @@ class dataloader(object):
 
         elif self.method == "bert":
             try:
-                X_2 = pickle.load(open('bert_train.pkl', 'rb'))
-                print('load bert vectorized data from bert_train.pkl. shape: {}\n'.format(X_2.shape))
+                X_2 = pickle.load(open("bert_train_submit.pkl", "rb"))
+                print(
+                    "load bert vectorized data from bert_train.pkl. shape: {}\n".format(
+                        X_2.shape
+                    )
+                )
                 return X_2
-            except:    
+            except:
                 X_2 = bert(X)
-                pickle.dump(X_2, open('bert_train.pkl', 'wb'))
+                pickle.dump(X_2, open("bert_train_submit.pkl", "wb"))
                 print("vectorize finished! shape: {}\n".format(X_2.shape))
                 return X_2
 

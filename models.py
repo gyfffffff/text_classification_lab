@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from mlp import mlp
 import torch
+from sklearn.model_selection import cross_val_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 from dataloader import dataloader
@@ -22,7 +23,7 @@ def run_model(args):
 
     clf_dict = {'rf': RandomForestClassifier(),
                 'svm': svm.SVC(),
-                'logisticReg': LogisticRegression()
+                'logisticReg': LogisticRegression(multi_class='multinomial',max_iter=500)
                 }
 
     tuned_parameters = {
@@ -55,7 +56,7 @@ def run_model(args):
             clf = GridSearchCV(clf_dict[model],
                                tuned_parameters[model],
                                scoring='accuracy',
-                               cv=5, n_jobs=3)
+                               cv=5)
             clf.fit(X_train, y_train)
             logging.info('model: {}, best_params: {}'.format(modelname, clf.best_params_))
             means = clf.cv_results_['mean_test_score']
@@ -73,7 +74,7 @@ def run_model(args):
                 else "cpu"
             )
             logging.info(f"Using {device} device")
-            mlp(X_train, y_train, device, modelname, train)
+            mlp(X_train, y_train, device, modelname, train, vectorize_method)
         else:
             logging.info(f'no such model: {modelname}')
     else:
@@ -92,10 +93,13 @@ def run_model(args):
             logging.info(f"Using {device} device")
             
             clf = clf.to(device)
-            X_test = X_test.tocoo()
-            X_test = torch.sparse_coo_tensor(
-                [X_test.row.tolist(), X_test.col.tolist()], torch.Tensor(X_test.data), size=X_test.shape
-            ).to_dense().to(device)
+            if vectorize_method == 'tf-idf':
+                X_test = X_test.tocoo()
+                X_test = torch.sparse_coo_tensor(
+                    [X_test.row.tolist(), X_test.col.tolist()], torch.Tensor(X_test.data), size=X_test.shape
+                ).to_dense().to(device)
+            else:
+                X_test = torch.Tensor(X_test)
             y_test = torch.Tensor(y_test).long().to(device)
             predict = clf(X_test).argmax(1)
 

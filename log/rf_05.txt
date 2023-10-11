@@ -1,0 +1,9 @@
+2023-10-08 14:52:40,395  =================== rf_05 start training ===================
+2023-10-08 14:52:42,999  gridsearching...
+2023-10-08 15:01:11,038  model: rf_05, best_params: {'max_depth': None, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 600}
+2023-10-08 15:01:11,038  0.906 (+/-0.011) for {'max_depth': None, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 200}
+2023-10-08 15:01:11,038  0.908 (+/-0.010) for {'max_depth': None, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 250}
+2023-10-08 15:01:11,038  0.909 (+/-0.011) for {'max_depth': None, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 350}
+2023-10-08 15:01:11,038  0.910 (+/-0.009) for {'max_depth': None, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 600}
+2023-10-08 15:01:11,142  model saved in model/rf_05.pkl
+2023-10-08 15:01:11,142  time spend 510.74647212028503 s

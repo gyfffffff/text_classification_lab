@@ -4,7 +4,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from mlp import mlp
 import torch
-from sklearn.model_selection import cross_val_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import accuracy_score
 from dataloader import dataloader
@@ -23,19 +22,21 @@ def run_model(args):
 
     clf_dict = {'rf': RandomForestClassifier(),
                 'svm': svm.SVC(),
-                'logisticReg': LogisticRegression(multi_class='multinomial',max_iter=500)
+                'logisticReg': LogisticRegression()
                 }
 
     tuned_parameters = {
-        'rf':[{'n_estimators': [3, 8, 12, 16, 20, 30], 
-               'max_depth': [3, 5, 7, 9], 
-               'min_samples_leaf': [2, 6, 10, 16, 22], 'min_samples_split': [2, 6, 12, 18, 24]},
-              ],
-        'svm':[{'C':[1, 10, 100, 1000], 'kernel':['linear','poly','rbf','sigmoid']},
-               {'gamma':[0.0001, 0.001, 0.0], 'kernel':['rbf']},
-               ],
+        'rf':[{'n_estimators': [50, 100, 150],
+            'max_depth': [12, 24, 30, None],
+            'min_samples_leaf': [1, 3, 8, 16, 22], 'min_samples_split': [2, 4, 6, 12, 24]},
+          ],
+        'svm':[{'C':[1, 10, 100, 1000], 'kernel':['linear']},
+            {'C':[1, 10, 100, 1000], 'gamma':[0.0001, 0.001, 0.0], 'kernel':['poly','rbf','sigmoid']},
+            ],
         'logisticReg':[
-            {'C':[1,10,100,1000], 'multi_class':['multinomial'], 'max_iter':[2000]}
+            {'C':[1,10,100,1000], 'multi_class':['multinomial'], 'max_iter':[20000], 'penalty':['l2']},
+            {'C':[1,10,100,1000], 'multi_class':['multinomial'], 'max_iter':[20000], 'penalty':['l1'], 'solver':['saga'],
+             'C':[1,10,100,1000], 'multi_class':['multinomial'], 'max_iter':[20000], 'penalty':['elasticnet'], 'solver':['saga'], 'l1_ratio':[0.4, 0.6]}
         ]
     }
 
@@ -54,7 +55,7 @@ def run_model(args):
             clf = GridSearchCV(clf_dict[model],
                                tuned_parameters[model],
                                scoring='accuracy',
-                               cv=5)
+                               cv=5, n_jobs=3)
             clf.fit(X_train, y_train)
             logging.info('model: {}, best_params: {}'.format(modelname, clf.best_params_))
             means = clf.cv_results_['mean_test_score']

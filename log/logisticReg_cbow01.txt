@@ -1,0 +1,17 @@
+2023-10-08 16:18:19,136  =================== logisticReg_cbow01 start training ===================
+2023-10-08 16:18:33,258  gridsearching...
+2023-10-08 16:20:24,843  model: logisticReg_cbow01, best_params: {'C': 1, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-08 16:20:24,843  0.560 (+/-0.021) for {'C': 1, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-08 16:20:24,843  0.557 (+/-0.013) for {'C': 10, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-08 16:20:24,843  0.555 (+/-0.014) for {'C': 100, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-08 16:20:24,843  0.555 (+/-0.014) for {'C': 1000, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-08 16:20:24,843  0.560 (+/-0.020) for {'C': 1, 'l1_ratio': 0.4, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,843  0.559 (+/-0.017) for {'C': 1, 'l1_ratio': 0.6, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,843  0.557 (+/-0.013) for {'C': 10, 'l1_ratio': 0.4, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,843  0.557 (+/-0.012) for {'C': 10, 'l1_ratio': 0.6, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,843  0.555 (+/-0.014) for {'C': 100, 'l1_ratio': 0.4, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,843  0.555 (+/-0.014) for {'C': 100, 'l1_ratio': 0.6, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,843  0.555 (+/-0.014) for {'C': 1000, 'l1_ratio': 0.4, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,843  0.555 (+/-0.014) for {'C': 1000, 'l1_ratio': 0.6, 'max_iter': 20000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-08 16:20:24,846  model saved in model/logisticReg_cbow01.pkl
+2023-10-08 16:20:24,846  time spend 125.71023440361023 s

@@ -1,0 +1,17 @@
+2023-10-05 20:10:44,670  =================== logisticReg_02 start training ===================
+2023-10-05 20:10:47,014  gridsearching...
+2023-10-06 07:54:19,695  model: logisticReg_02, best_params: {'C': 1000, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-06 07:54:19,699  0.932 (+/-0.013) for {'C': 1, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-06 07:54:19,699  0.934 (+/-0.014) for {'C': 10, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-06 07:54:19,699  0.935 (+/-0.015) for {'C': 100, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-06 07:54:19,699  0.936 (+/-0.017) for {'C': 1000, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l2'}
+2023-10-06 07:54:19,699  0.907 (+/-0.008) for {'C': 1, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l1', 'solver': 'saga'}
+2023-10-06 07:54:19,699  nan (+/-nan) for {'C': 1, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-06 07:54:19,699  0.923 (+/-0.014) for {'C': 10, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l1', 'solver': 'saga'}
+2023-10-06 07:54:19,699  nan (+/-nan) for {'C': 10, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-06 07:54:19,699  0.931 (+/-0.012) for {'C': 100, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l1', 'solver': 'saga'}
+2023-10-06 07:54:19,699  nan (+/-nan) for {'C': 100, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-06 07:54:19,699  0.932 (+/-0.014) for {'C': 1000, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'l1', 'solver': 'saga'}
+2023-10-06 07:54:19,699  nan (+/-nan) for {'C': 1000, 'max_iter': 2000, 'multi_class': 'multinomial', 'penalty': 'elasticnet', 'solver': 'saga'}
+2023-10-06 07:54:19,734  model saved in model/logisticReg_02.pkl
+2023-10-06 07:54:19,734  time spend 42215.06433844566 s

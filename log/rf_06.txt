@@ -1,0 +1,24 @@
+2023-10-08 15:08:44,701  =================== rf_06 start training ===================
+2023-10-08 15:08:46,929  gridsearching...
+2023-10-08 15:09:43,863  model: rf_06, best_params: {'max_depth': 9, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 400}
+2023-10-08 15:09:43,863  0.871 (+/-0.026) for {'max_depth': 9, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 200}
+2023-10-08 15:09:43,863  0.884 (+/-0.015) for {'max_depth': 9, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 300}
+2023-10-08 15:09:43,863  0.888 (+/-0.009) for {'max_depth': 9, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 400}
+2023-10-08 15:09:43,879  model saved in model/rf_06.pkl
+2023-10-08 15:09:43,879  time spend 59.17816758155823 s
+2023-10-08 15:11:06,393  =================== rf_06 start training ===================
+2023-10-08 15:11:08,770  gridsearching...
+2023-10-08 15:13:16,107  model: rf_06, best_params: {'max_depth': 24, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 300}
+2023-10-08 15:13:16,107  0.893 (+/-0.011) for {'max_depth': 24, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 200}
+2023-10-08 15:13:16,107  0.898 (+/-0.011) for {'max_depth': 24, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 300}
+2023-10-08 15:13:16,107  0.898 (+/-0.012) for {'max_depth': 24, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 400}
+2023-10-08 15:13:16,131  model saved in model/rf_06.pkl
+2023-10-08 15:13:16,131  time spend 129.73852014541626 s
+2023-10-08 15:15:35,469  =================== rf_06 start training ===================
+2023-10-08 15:15:37,554  gridsearching...
+2023-10-08 15:20:29,623  model: rf_06, best_params: {'max_depth': 96, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 200}
+2023-10-08 15:20:29,624  0.907 (+/-0.011) for {'max_depth': 96, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 200}
+2023-10-08 15:20:29,624  0.907 (+/-0.011) for {'max_depth': 96, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 300}
+2023-10-08 15:20:29,624  0.906 (+/-0.011) for {'max_depth': 96, 'min_samples_leaf': 3, 'min_samples_split': 4, 'n_estimators': 400}
+2023-10-08 15:20:29,646  model saved in model/rf_06.pkl
+2023-10-08 15:20:29,646  time spend 294.1768035888672 s

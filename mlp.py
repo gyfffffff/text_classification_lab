@@ -13,7 +13,7 @@ class MLP(nn.Module):
             activate_func,
             nn.Linear(hn, 10)
         )
-        self._initialize_weights()
+        self._initialize_weights()  # Xavier, 不执行则为默认的Kaiming
 
     def forward(self, x):
         x = self.model(x)
@@ -44,7 +44,7 @@ def mlp(x_train, y_train, device, modelname, train, vectorize_method):
     optim = torch.optim.SGD # torch.optim.Adam
     batchsize = 64 # 64 
 
-    patient = 64  # 有2次验证集上损失增加，就认为模型有过拟合倾向
+    patient = 32  # 有32次验证集上损失增加，就认为模型有过拟合倾向
     patienti = 0
 
     logging.basicConfig(format='%(asctime)s %(message)s',
@@ -124,7 +124,7 @@ def mlp(x_train, y_train, device, modelname, train, vectorize_method):
                 accuracy = (predict.argmax(1) == y_val).sum()
                 total_val_accuracy += accuracy
             logging.info("\n第{}轮, 验证集上loss: {}, accuracy: {}\n".format(i+1, total_val_loss, total_val_accuracy/val_n))
-            if bestacc <= total_val_accuracy/val_n:
+            if bestacc < total_val_accuracy/val_n:
                 bestacc = total_val_accuracy/val_n
                 bestmodel = model
             if minloss > total_val_loss:

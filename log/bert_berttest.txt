@@ -1,0 +1,16 @@
+2023-10-12 12:51:48,189  =================== bert_berttest start training ===================
+2023-10-12 12:51:48,372  gridsearching...
+2023-10-12 12:52:49,902  =================== bert_berttest start training ===================
+2023-10-12 12:53:22,816  =================== bert_berttest start training ===================
+2023-10-12 12:53:22,935  Using cuda device
+2023-10-12 12:53:24,381  Lock 2312148259400 acquired on C:\Users\charo/.cache\huggingface\hub\models--bert-base-cased\blobs\107460496b431545e4f921afb3fd5486fd2ae79d.lock
+2023-10-12 12:53:24,943  Lock 2312148259400 released on C:\Users\charo/.cache\huggingface\hub\models--bert-base-cased\blobs\107460496b431545e4f921afb3fd5486fd2ae79d.lock
+2023-10-12 12:53:25,958  Lock 2312168672392 acquired on C:\Users\charo/.cache\huggingface\hub\models--bert-base-cased\blobs\d6992b8cd27d7a132eafce6a8210272329a371b1c762d453588795dd3835593e.lock
+2023-10-12 12:54:53,937  =================== bert_berttest start training ===================
+2023-10-12 12:54:54,046  Using cuda device
+2023-10-12 12:57:54,819  =================== bert_berttest start training ===================
+2023-10-12 12:57:55,001  Using cuda device
+2023-10-12 13:00:36,235  =================== bert_berttest start training ===================
+2023-10-12 13:00:36,438  Using cuda device
+2023-10-12 13:00:49,238  ===================µÚ1ÂÖ¿ªÊ¼=======================
+

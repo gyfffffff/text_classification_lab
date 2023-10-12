@@ -52,8 +52,6 @@ class BertClassifier(nn.Module):
         self.linear = nn.Linear(768, 10)
 
     def forward(self, input_id, mask):
-        # 第一个变量 _包含sequence中所有 token 的 Embedding 向量层。
-        # 第二个变量pooled_output包含 [CLS] token 的 Embedding 向量。
         _, pooled_output = self.bert(
             input_ids=input_id, attention_mask=mask, return_dict=False
         )
@@ -64,15 +62,11 @@ class BertClassifier(nn.Module):
 
 
 def train(model, train_data, train_y, val_data, val_y, learning_rate, epochs):
-    # 通过Dataset类获取训练和验证集
     train, val = Dataset(train_data, train_y), Dataset(val_data, val_y)
-    # DataLoader根据batch_size获取数据，训练时选择打乱样本
     train_dataloader = torch.utils.data.DataLoader(train, batch_size=32, shuffle=True)
     val_dataloader = torch.utils.data.DataLoader(val, batch_size=32, shuffle=True)
-    # 判断是否使用GPU
     use_cuda = torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
-    # 定义损失函数和优化器
     criterion = nn.CrossEntropyLoss()
     optimizer = Adam(model.parameters(), lr=learning_rate)
     scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9999)
@@ -80,40 +74,29 @@ def train(model, train_data, train_y, val_data, val_y, learning_rate, epochs):
     if use_cuda:
         model = model.cuda()
         criterion = criterion.cuda()
-    # 开始进入训练循环
     bestmodel = None
     bestvalacc = 0
     for epoch_num in range(epochs):
-        # 定义两个变量，用于存储训练集的准确率和损失
         total_acc_train = 0
         total_loss_train = 0
-        # 进度条函数tqdm
         for train_input, train_label in tqdm(train_dataloader):
             train_label = train_label.to(device)
             mask = train_input["attention_mask"].to(device)
             input_id = train_input["input_ids"].squeeze(1).to(device)
-            # 通过模型得到输出
             output = model(input_id, mask)
-            # 计算损失
             batch_loss = criterion(output, train_label)
             total_loss_train += batch_loss.item()
-            # 计算精度
             acc = (output.argmax(dim=1) == train_label).sum().item()
             total_acc_train += acc
-            # 模型更新
             model.zero_grad()
             batch_loss.backward()
             optimizer.step()
             scheduler.step()
         # ------ 验证模型 -----------
-        # 定义两个变量，用于存储验证集的准确率和损失
         total_acc_val = 0
         total_loss_val = 0
-        # 不需要计算梯度
         with torch.no_grad():
-            # 循环获取数据集，并用训练好的模型进行验证
             for val_input, val_label in val_dataloader:
-                # 如果有GPU，则使用GPU，接下来的操作同训练
                 val_label = val_label.to(device)
                 mask = val_input["attention_mask"].to(device)
                 input_id = val_input["input_ids"].squeeze(1).to(device)
@@ -143,8 +126,6 @@ def train(model, train_data, train_y, val_data, val_y, learning_rate, epochs):
 
 if __name__ == "__main__":
     corpus_raw, labels = dataloader().get_raw()
-    # corpus_raw = corpus_raw[:2000]
-    # labels = labels[:2000]
     tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
     modelname = "bert"
     logging.basicConfig(

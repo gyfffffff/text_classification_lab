@@ -19,7 +19,7 @@ def bert(X):
     for text in tqdm(X):
         tokens_tensor = tokenizer.encode_plus(
             text, add_special_tokens=True, return_tensors="pt"  # 添加[CLS]和[SEP]标记
-        )['input_ids'].to(device)
+        ).to(device) # ['input_ids']
         with torch.no_grad():
             outputs = model(tokens_tensor)
             hidden_states = outputs.pooler_output
